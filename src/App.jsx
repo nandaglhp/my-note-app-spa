@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 import NotesPage from "./pages/NotesPage.jsx";
 import NoteDetailPage from "./pages/NoteDetailPage.jsx";
 import AddNotePage from "./pages/AddNotePage";
