@@ -16,6 +16,10 @@ function NotesPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Daftar Catatan</h1>
+      <Link to="/notes/new" className="text-blue-500 hover:text-blue-600">
+        Tambah Catatan Baru
+      </Link>
+
       {notes.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {notes.map((note) => (
