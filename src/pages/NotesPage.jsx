@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getAllNotes } from "../utils/local-data";
 import NoteCard from "../components/NoteCard"; // Diperbarui untuk mencocokkan lokasi baru
 import FloatingActionButton from "../components/FloatingActionButton";
+import EmptyState from "../components/EmptyState";
 
 function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -23,7 +24,7 @@ function NotesPage() {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600">Tidak ada catatan.</p>
+        <EmptyState /> // Ganti baris ini
       )}
       <FloatingActionButton to="/notes/new" />
     </div>
