@@ -1,8 +1,6 @@
 // src/pages/NotesPage.jsx
 import React, { useState, useEffect } from "react";
 import { getAllNotes } from "../utils/local-data";
-import { showFormattedDate } from "../utils";
-import { Link } from "react-router-dom";
 import NoteCard from "../components/NoteCard"; // Diperbarui untuk mencocokkan lokasi baru
 import FloatingActionButton from "../components/FloatingActionButton";
 
