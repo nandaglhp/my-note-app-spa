@@ -4,6 +4,7 @@ import { getAllNotes } from "../utils/local-data";
 import { showFormattedDate } from "../utils";
 import { Link } from "react-router-dom";
 import NoteCard from "../components/NoteCard"; // Diperbarui untuk mencocokkan lokasi baru
+import FloatingActionButton from "../components/FloatingActionButton";
 
 function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -26,9 +27,7 @@ function NotesPage() {
       ) : (
         <p className="text-gray-600">Tidak ada catatan.</p>
       )}
-      <Link to="/notes/new" className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md shadow-lg text-4xl font-semibold fixed bottom-8 right-8 transition duration-300 ease-in-out">
-        +
-      </Link>
+      <FloatingActionButton to="/notes/new" />
     </div>
   );
 }
