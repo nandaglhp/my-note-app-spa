@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { showFormattedDate } from "../../utils";
+import PropTypes from "prop-types";
 
 const NoteCard = ({ note }) => {
   return (
@@ -13,6 +14,15 @@ const NoteCard = ({ note }) => {
       <p className="mt-4 text-gray-700">{note.body.length > 100 ? `${note.body.substring(0, 100)}...` : note.body}</p>
     </div>
   );
+};
+
+NoteCard.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default NoteCard;

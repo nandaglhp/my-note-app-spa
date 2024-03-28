@@ -2,6 +2,7 @@
 
 import React from "react";
 import { showFormattedDate } from "../../utils";
+import PropTypes from "prop-types";
 
 const NoteMetadata = ({ title, createdAt }) => {
   return (
@@ -10,6 +11,11 @@ const NoteMetadata = ({ title, createdAt }) => {
       <p className="text-sm text-gray-500 mb-6">{showFormattedDate(createdAt)}</p>
     </>
   );
+};
+
+NoteMetadata.propTypes = {
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 };
 
 export default NoteMetadata;

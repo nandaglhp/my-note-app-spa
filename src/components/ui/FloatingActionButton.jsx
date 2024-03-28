@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const FloatingActionButton = ({ to }) => {
   return (
@@ -9,6 +10,10 @@ const FloatingActionButton = ({ to }) => {
       +
     </Link>
   );
+};
+
+FloatingActionButton.propTypes = {
+  to: PropTypes.string.isRequired,
 };
 
 export default FloatingActionButton;
