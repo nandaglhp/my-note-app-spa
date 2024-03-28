@@ -1,6 +1,5 @@
-// src/components/ui/DeleteButton.jsx
-
 import React from "react";
+import PropTypes from "prop-types"; // Impor PropTypes
 
 const DeleteButton = ({ onClick }) => {
   return (
@@ -8,6 +7,10 @@ const DeleteButton = ({ onClick }) => {
       Hapus
     </button>
   );
+};
+
+DeleteButton.propTypes = {
+  onClick: PropTypes.func.isRequired, // Menandai onClick sebagai prop yang diperlukan
 };
 
 export default DeleteButton;
