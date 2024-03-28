@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getNote } from "../utils/local-data";
-import NoteMetadata from "../components/NoteMetaData"; // Impor baru
-import NoteContent from "../components/NoteContent"; // Impor baru
+import NoteMetadata from "../components/notes/NoteMetaData"; // Impor baru
+import NoteContent from "../components/notes/NoteContent"; // Impor baru
 
 function NoteDetailPage() {
   const { noteId } = useParams();

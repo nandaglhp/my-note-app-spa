@@ -1,7 +1,7 @@
 // src/components/NoteMetadata.jsx
 
 import React from "react";
-import { showFormattedDate } from "../utils";
+import { showFormattedDate } from "../../utils";
 
 const NoteMetadata = ({ title, createdAt }) => {
   return (

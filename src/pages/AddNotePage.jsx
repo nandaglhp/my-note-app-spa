@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addNote } from "../utils/local-data";
-import InputField from "../components/InputField"; // Impor baru
-import TextAreaField from "../components/TextAreaField"; // Impor baru
+import InputField from "../components/form/InputField"; // Impor baru
+import TextAreaField from "../components/form/TextAreaField"; // Impor baru
 
 function AddNotePage() {
   const [title, setTitle] = useState("");

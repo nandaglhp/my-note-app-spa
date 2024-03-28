@@ -1,9 +1,9 @@
 // src/pages/NotesPage.jsx
 import React, { useState, useEffect } from "react";
 import { getAllNotes } from "../utils/local-data";
-import NoteCard from "../components/NoteCard"; // Diperbarui untuk mencocokkan lokasi baru
-import FloatingActionButton from "../components/FloatingActionButton";
-import EmptyState from "../components/EmptyState";
+import NoteCard from "../components/notes/NoteCard"; // Diperbarui untuk mencocokkan lokasi baru
+import FloatingActionButton from "../components/ui/FloatingActionButton";
+import EmptyState from "../components/ui/EmptyState";
 
 function NotesPage() {
   const [notes, setNotes] = useState([]);

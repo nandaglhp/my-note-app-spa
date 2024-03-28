@@ -1,7 +1,7 @@
 // src/components/NoteCard/index.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { showFormattedDate } from "../utils";
+import { showFormattedDate } from "../../utils";
 
 const NoteCard = ({ note }) => {
   return (
