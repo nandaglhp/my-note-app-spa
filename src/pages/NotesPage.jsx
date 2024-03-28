@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllNotes } from "../utils/local-data";
 import { showFormattedDate } from "../utils";
+import { Link } from "react-router-dom";
 
 function NotesPage() {
   const [notes, setNotes] = useState([]);
@@ -19,7 +20,9 @@ function NotesPage() {
         <div className="grid grid-cols-1 gap-6">
           {notes.map((note) => (
             <div key={note.id} className="p-6 bg-white rounded-lg shadow-md">
-              <h2 className="text-xl font-semibold text-gray-900">{note.title}</h2>
+              <Link to={`/note/${note.id}`} className="text-xl font-semibold text-gray-900 hover:text-gray-700">
+                {note.title}
+              </Link>
               <p className="text-gray-600">{showFormattedDate(note.createdAt)}</p>
               <p className="mt-4 text-gray-700">{note.body}</p>
             </div>
