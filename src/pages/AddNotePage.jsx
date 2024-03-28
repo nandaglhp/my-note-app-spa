@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { addNote } from "../utils/local-data";
 import InputField from "../components/form/InputField"; // Impor baru
 import TextAreaField from "../components/form/TextAreaField"; // Impor baru
+import Button from "../components/ui/Button";
+import FormContainer from "../components/layout/FormContainer";
 
 function AddNotePage() {
   const [title, setTitle] = useState("");
@@ -23,16 +25,14 @@ function AddNotePage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 bg-blue-100 shadow rounded-lg mt-16">
+    <FormContainer>
       <h2 className="text-2xl font-semibold mb-6 text-gray-800">Tambah Catatan Baru</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <InputField id="title" label="Judul" value={title} onChange={(e) => setTitle(e.target.value)} />
         <TextAreaField id="body" label="Isi Catatan" value={body} onChange={(e) => setBody(e.target.value)} />
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-          Simpan Catatan
-        </button>
+        <Button type="submit">Simpan Catatan</Button>
       </form>
-    </div>
+    </FormContainer>
   );
 }
 
