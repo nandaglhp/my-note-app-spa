@@ -17,14 +17,14 @@ function NotesPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Daftar Catatan</h1>
       {notes.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {notes.map((note) => (
-            <div key={note.id} className="p-6 bg-white rounded-lg shadow-md">
-              <Link to={`/note/${note.id}`} className="text-xl font-semibold text-gray-900 hover:text-gray-700">
+            <div key={note.id} className="p-6 bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-200 ease-in-out">
+              <Link to={`/note/${note.id}`} className="text-xl font-semibold text-gray-900 hover:text-blue-500">
                 {note.title}
               </Link>
-              <p className="text-gray-600">{showFormattedDate(note.createdAt)}</p>
-              <p className="mt-4 text-gray-700">{note.body}</p>
+              <p className="text-sm text-gray-600 mt-2">{showFormattedDate(note.createdAt)}</p>
+              <p className="mt-4 text-gray-700">{note.body.length > 100 ? note.body.substring(0, 100) + "..." : note.body}</p>
             </div>
           ))}
         </div>

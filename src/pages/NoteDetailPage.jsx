@@ -19,10 +19,11 @@ function NoteDetailPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold text-gray-800">Detail Catatan</h1>
-      <p className="text-gray-600 mt-2">{showFormattedDate(note.createdAt)}</p>
-      <h2 className="mt-4 text-xl font-semibold text-gray-900">{note.title}</h2>
-      <p className="mt-2 text-gray-700">{note.body}</p>
+      <article className="rounded-lg shadow-lg p-6 bg-white">
+        <h1 className="text-3xl font-bold text-gray-800 mb-3">{note.title}</h1>
+        <p className="text-sm text-gray-500 mb-6">{showFormattedDate(note.createdAt)}</p>
+        <section className="text-gray-700">{note.body}</section>
+      </article>
     </div>
   );
 }
