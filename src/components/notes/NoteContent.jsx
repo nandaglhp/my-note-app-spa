@@ -1,4 +1,3 @@
-// src/components/notes/NoteContent.jsx
 import React from "react";
 import PropTypes from "prop-types";
 import parser from "html-react-parser";
