@@ -11,10 +11,22 @@ const ArchivedNotesPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Catatan Terarsip</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1
+        style={{
+          fontSize: "2.25rem" /* 36px */,
+          fontWeight: "bold",
+          textAlign: "center",
+          color: "#2c3e50",
+          marginBottom: "1rem" /* 16px */,
+          textTransform: "uppercase",
+          letterSpacing: "1px",
+        }}
+      >
+        Catatan Terarsip
+      </h1>
       {notes.length > 0 ? (
-        <div className="notes-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {notes.map((note) => (
             <NoteCard key={note.id} note={note} />
           ))}
