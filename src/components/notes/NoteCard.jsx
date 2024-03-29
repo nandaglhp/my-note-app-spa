@@ -1,4 +1,3 @@
-// src/components/notes/NoteCard.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { showFormattedDate } from "../../utils";
