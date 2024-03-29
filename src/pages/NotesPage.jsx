@@ -21,7 +21,8 @@ const NotesPage = () => {
   };
 
   useEffect(() => {
-    const filteredNotes = getAllNotes().filter((note) => note.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    // Filter catatan yang judulnya cocok dengan query pencarian dan tidak diarsipkan.
+    const filteredNotes = getAllNotes().filter((note) => note.title.toLowerCase().includes(searchQuery.toLowerCase()) && !note.archived);
     setNotes(filteredNotes);
   }, [searchQuery]);
 
