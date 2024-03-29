@@ -1,10 +1,12 @@
+// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/layout/Navbar"; // Pastikan path ini benar sesuai struktur folder Anda
+import Navbar from "./components/layout/Navbar";
 import NotesPage from "./pages/NotesPage";
 import NoteDetailPage from "./pages/NoteDetailPage";
 import AddNotePage from "./pages/AddNotePage";
-import ArchivedNotesPage from "./pages/ArchivedNotesPage"; // Nama variabel diubah untuk konsistensi
+import ArchivedNotesPage from "./pages/ArchivedNotesPage";
+import NotFoundPage from "./pages/NotFoundPage"; // Pastikan untuk mengimpor NotFoundPage
 
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
         <Route path="/note/:noteId" element={<NoteDetailPage />} />
         <Route path="/notes/new" element={<AddNotePage />} />
         <Route path="/archived" element={<ArchivedNotesPage />} />
-        {/* Definisikan Route lainnya di sini */}
+        <Route path="*" element={<NotFoundPage />} /> {/* Tambahkan ini untuk 404 Page */}
       </Routes>
     </Router>
   );
