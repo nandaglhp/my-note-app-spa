@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { addNote } from "../utils/local-data";
 import InputField from "../components/form/InputField"; // Impor baru
 import TextAreaField from "../components/form/TextAreaField"; // Impor baru
-import Button from "../components/ui/Button";
+import Button from "../components/ui/SaveButton";
 import FormContainer from "../components/layout/FormContainer";
 
 function AddNotePage() {

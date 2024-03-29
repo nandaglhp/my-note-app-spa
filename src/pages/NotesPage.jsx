@@ -4,7 +4,7 @@ import { getAllNotes } from "../utils/local-data";
 import NoteCard from "../components/notes/NoteCard";
 import SearchBar from "../components/form/SearchBar";
 import EmptyState from "../components/ui/EmptyState";
-import FloatingActionButton from "../components/ui/FloatingActionButton";
+import FloatingActionButton from "../components/ui/AddButton";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
