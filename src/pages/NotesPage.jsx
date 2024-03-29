@@ -1,33 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { getActiveNotes } from "../utils/local-data"; // Gunakan fungsi getActiveNotes
+import { useLocation, useNavigate } from "react-router-dom"; // Pastikan menggunakan useNavigate
+import { getAllNotes } from "../utils/local-data";
 import NoteCard from "../components/notes/NoteCard";
-import FloatingActionButton from "../components/ui/FloatingActionButton";
+import SearchBar from "../components/form/SearchBar";
 import EmptyState from "../components/ui/EmptyState";
 
-function NotesPage() {
-  const [activeNotes, setActiveNotes] = useState([]);
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+const NotesPage = () => {
+  const [notes, setNotes] = useState([]);
+  const query = useQuery();
+  const searchQuery = query.get("search") || "";
+  const navigate = useNavigate(); // Menggunakan useNavigate
+
+  const setSearchTerm = (searchTerm) => {
+    navigate(searchTerm ? `/?search=${searchTerm}` : "/");
+  };
 
   useEffect(() => {
-    // Memanggil fungsi untuk mengambil semua catatan aktif dan menyimpannya ke state
-    const notes = getActiveNotes();
-    setActiveNotes(notes);
-  }, []);
+    const filteredNotes = getAllNotes().filter((note) => note.title.toLowerCase().includes(searchQuery.toLowerCase()));
+    setNotes(filteredNotes);
+  }, [searchQuery]);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 relative">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">Daftar Catatan</h1>
-      {activeNotes.length > 0 ? (
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">Daftar Catatan</h1>
+      <SearchBar searchTerm={searchQuery} setSearchTerm={setSearchTerm} />
+      {notes.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeNotes.map((note) => (
+          {notes.map((note) => (
             <NoteCard key={note.id} note={note} />
           ))}
         </div>
       ) : (
-        <EmptyState message="Tidak ada catatan aktif." />
+        <EmptyState message="Tidak ada catatan yang cocok." />
       )}
-      <FloatingActionButton to="/notes/new" />
     </div>
   );
-}
+};
 
 export default NotesPage;
