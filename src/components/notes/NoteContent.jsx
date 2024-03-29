@@ -1,10 +1,9 @@
-// src/components/NoteContent.jsx
-
 import React from "react";
 import PropTypes from "prop-types";
+import parse from "html-react-parser"; // Mengimpor html-react-parser
 
 const NoteContent = ({ content }) => {
-  return <section className="text-gray-700">{content}</section>;
+  return <div>{parse(content)}</div>; // Menggunakan parse untuk merender konten HTML
 };
 
 NoteContent.propTypes = {
