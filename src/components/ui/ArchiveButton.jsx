@@ -1,5 +1,3 @@
-// File: src/components/ui/ArchiveButton.jsx
-
 import React from "react";
 import PropTypes from "prop-types";
 

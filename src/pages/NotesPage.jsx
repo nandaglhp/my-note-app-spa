@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Pastikan menggunakan useNavigate
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAllNotes } from "../utils/local-data";
 import NoteCard from "../components/notes/NoteCard";
 import SearchBar from "../components/form/SearchBar";
@@ -14,14 +14,13 @@ const NotesPage = () => {
   const [notes, setNotes] = useState([]);
   const query = useQuery();
   const searchQuery = query.get("search") || "";
-  const navigate = useNavigate(); // Menggunakan useNavigate
+  const navigate = useNavigate();
 
   const setSearchTerm = (searchTerm) => {
     navigate(searchTerm ? `/?search=${searchTerm}` : "/");
   };
 
   useEffect(() => {
-    // Filter catatan yang judulnya cocok dengan query pencarian dan tidak diarsipkan.
     const filteredNotes = getAllNotes().filter((note) => note.title.toLowerCase().includes(searchQuery.toLowerCase()) && !note.archived);
     setNotes(filteredNotes);
   }, [searchQuery]);

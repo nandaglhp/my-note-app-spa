@@ -7,7 +7,7 @@ import FormContainer from "../components/layout/FormContainer";
 
 function AddNotePage() {
   const [title, setTitle] = useState("");
-  const bodyRef = useRef(null); // menggunakan useRef untuk merujuk elemen contentEditable
+  const bodyRef = useRef(null);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -15,7 +15,7 @@ function AddNotePage() {
     const note = {
       id: `note-${+new Date()}`,
       title,
-      body: bodyRef.current.innerHTML, // Menggunakan innerHTML dari ref
+      body: bodyRef.current.innerHTML,
       archived: false,
       createdAt: new Date().toISOString(),
     };
@@ -28,13 +28,7 @@ function AddNotePage() {
       <h2 className="text-2xl font-semibold mb-6 text-gray-800">Tambah Catatan Baru</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <InputField id="title" label="Judul" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <div
-          ref={bodyRef} // Mengaitkan ref ke div
-          className="mt-1 block w-full rounded-md border-2 border-gray-400 focus:border-blue-500 focus:ring-blue-500 p-2"
-          contentEditable
-          role="textbox"
-          aria-multiline="true"
-        ></div>
+        <div ref={bodyRef} className="mt-1 block w-full rounded-md border-2 border-gray-400 focus:border-blue-500 focus:ring-blue-500 p-2" contentEditable role="textbox" aria-multiline="true"></div>
         <Button type="submit">Simpan Catatan</Button>
       </form>
     </FormContainer>

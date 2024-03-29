@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { showFormattedDate } from "../../utils";
 import PropTypes from "prop-types";
-import parse from "html-react-parser"; // Pastikan telah mengimpor html-react-parser
+import parse from "html-react-parser";
 
 const NoteCard = ({ note }) => {
   const bodyPreview = note.body.length > 100 ? `${note.body.substring(0, 100)}...` : note.body;
@@ -13,7 +13,7 @@ const NoteCard = ({ note }) => {
         {note.title}
       </Link>
       <p className="text-sm text-gray-600 mt-2">{showFormattedDate(note.createdAt)}</p>
-      <div className="mt-4 text-gray-700">{parse(bodyPreview)}</div> {/* Gunakan parse untuk merender HTML */}
+      <div className="mt-4 text-gray-700">{parse(bodyPreview)}</div>
     </div>
   );
 };

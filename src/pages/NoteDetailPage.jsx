@@ -4,7 +4,7 @@ import { getNote, deleteNote, archiveNote, unarchiveNote } from "../utils/local-
 import NoteMetadata from "../components/notes/NoteMetaData";
 import NoteContent from "../components/notes/NoteContent";
 import DeleteButton from "../components/ui/DeleteButton";
-import ArchiveButton from "../components/ui/ArchiveButton"; // Asumsikan Anda sudah memiliki komponen ini
+import ArchiveButton from "../components/ui/ArchiveButton";
 
 function NoteDetailPage() {
   const { noteId } = useParams();

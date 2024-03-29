@@ -1,5 +1,3 @@
-// src/components/NoteMetadata.jsx
-
 import React from "react";
 import { showFormattedDate } from "../../utils";
 import PropTypes from "prop-types";

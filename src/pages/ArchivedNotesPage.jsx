@@ -14,11 +14,11 @@ const ArchivedNotesPage = () => {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1
         style={{
-          fontSize: "2.25rem" /* 36px */,
+          fontSize: "2.25rem",
           fontWeight: "bold",
           textAlign: "center",
           color: "#2c3e50",
-          marginBottom: "1rem" /* 16px */,
+          marginBottom: "1rem",
           textTransform: "uppercase",
           letterSpacing: "1px",
         }}
