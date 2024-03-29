@@ -1,9 +1,10 @@
+// src/components/notes/NoteContent.jsx
 import React from "react";
 import PropTypes from "prop-types";
-import parse from "html-react-parser";
+import parser from "html-react-parser";
 
 const NoteContent = ({ content }) => {
-  return <div>{parse(content)}</div>;
+  return <div style={{ overflowWrap: "break-word" }}>{parser(content)}</div>;
 };
 
 NoteContent.propTypes = {

@@ -1,3 +1,4 @@
+// src/components/notes/NoteCard.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { showFormattedDate } from "../../utils";
@@ -13,7 +14,9 @@ const NoteCard = ({ note }) => {
         {note.title}
       </Link>
       <p className="text-sm text-gray-600 mt-2">{showFormattedDate(note.createdAt)}</p>
-      <div className="mt-4 text-gray-700">{parse(bodyPreview)}</div>
+      <div className="mt-4 text-gray-700" style={{ overflowWrap: "break-word" }}>
+        {parse(bodyPreview)}
+      </div>
     </div>
   );
 };
