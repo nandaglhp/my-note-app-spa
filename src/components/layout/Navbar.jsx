@@ -1,17 +1,12 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import Button from "../ui/Button"; // Pastikan path ini sesuai
+import { getAccessToken, logout } from "../../utils/network-data"; // Import fungsi getAccessToken dan logout
 
 const Navbar = ({ links }) => {
   const navigate = useNavigate();
-  const location = useLocation(); // Dapatkan lokasi saat ini
-
-  // Fungsi untuk menangani proses logout
   const handleLogout = () => {
-    // Proses menghapus token (misalnya)
-    localStorage.removeItem("accessToken");
-    // Redirect ke halaman login setelah logout
+    logout();
     navigate("/login");
   };
 
@@ -20,15 +15,12 @@ const Navbar = ({ links }) => {
       <Link to="/" className="text-2xl font-bold">
         My Note App
       </Link>
-      <div className="flex items-center gap-4">
-        {links.map(({ title, path }) => (
-          <Link key={path} to={path} className="text-xl">
-            {title}
-          </Link>
-        ))}
-        {/* Render tombol logout berdasarkan path */}
-        {location.pathname !== "/login" && location.pathname !== "/register" && <Button text="Logout" onClick={handleLogout} />}
-      </div>
+      {links.map(({ title, path }) => (
+        <Link key={path} to={path} className="text-xl">
+          {title}
+        </Link>
+      ))}
+      {getAccessToken() && <button onClick={handleLogout}>Logout</button>}
     </div>
   );
 };
@@ -40,10 +32,6 @@ Navbar.propTypes = {
       path: PropTypes.string.isRequired,
     })
   ),
-};
-
-Navbar.defaultProps = {
-  links: [],
 };
 
 export default Navbar;
