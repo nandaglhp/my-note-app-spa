@@ -1,34 +1,38 @@
 // src/pages/RegisterPage.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InputField from "../components/form/InputField";
-import Button from "../components/ui/SaveButton"; // Menggunakan komponen Button yang telah diperbarui
-import FormContainer from "../components/layout/FormContainer"; // Mengimpor FormContainer untuk styling
+import Button from "../components/ui/SaveButton";
+import FormContainer from "../components/layout/FormContainer";
+import { register } from "../utils/network-data"; // Import fungsi register
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Logika untuk mengirim data ke API akan ditambahkan di sini
-    console.log({ name, email, password });
+
+    // Gunakan fungsi register dari network-data.js
+    const { error } = await register({ name, email, password });
+
+    if (!error) {
+      // Jika registrasi berhasil, navigasikan user ke halaman login atau beranda
+      navigate("/login");
+    }
   };
 
   return (
-    // Menggunakan FormContainer untuk membungkus formulir registrasi
     <FormContainer>
-      <div className="register-page">
-        <h2 className="text-center text-2xl font-semibold mb-6">Registrasi</h2>
-        <form onSubmit={handleSubmit} className="register-form">
-          <InputField id="name" label="Nama" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          <InputField id="email" label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <InputField id="password" label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <div className="flex justify-center mt-4">
-            <Button type="submit">Daftar</Button>
-          </div>
-        </form>
-      </div>
+      <h2 className="text-xl font-semibold mb-4">Registrasi</h2>
+      <form onSubmit={handleSubmit}>
+        <InputField id="name" label="Nama" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <InputField id="email" label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <InputField id="password" label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Button type="submit">Daftar</Button>
+      </form>
     </FormContainer>
   );
 };
