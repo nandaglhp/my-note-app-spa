@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../components/form/InputField";
 import Button from "../components/ui/SaveButton";
+import { login, putAccessToken } from "../utils/network-data";
 import FormContainer from "../components/layout/FormContainer";
-import { login } from "../utils/network-data";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -13,13 +13,16 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { error } = await login({ email, password });
-    if (!error) {
-      // Assumption: navigate to home page on successful login
+    const response = await login({ email, password });
+
+    if (!response.error) {
+      // Menyimpan access token ke local storage
+      putAccessToken(response.data.accessToken);
+      // Asumsi: navigasi ke halaman utama setelah login berhasil
       navigate("/");
     } else {
-      // Handle login failure
-      alert("Login failed. Please check your email and password.");
+      // Menangani kegagalan login
+      alert("Login gagal. Silakan periksa email dan password Anda.");
     }
   };
 
@@ -31,7 +34,7 @@ function LoginPage() {
         <InputField id="password" label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <Button type="submit">Login</Button>
       </form>
-    </FormContainer> // This was missing in the previous snippet
+    </FormContainer>
   );
 }
 
