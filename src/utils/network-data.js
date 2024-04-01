@@ -18,6 +18,7 @@ async function fetchWithToken(url, options = {}) {
   });
 }
 
+// sudah
 async function login({ email, password }) {
   const response = await fetch(`${BASE_URL}/login`, {
     method: "POST",
@@ -37,6 +38,11 @@ async function login({ email, password }) {
   return { error: false, data: responseJson.data };
 }
 
+function logout() {
+  localStorage.removeItem("accessToken");
+}
+
+// sudah
 async function register({ name, email, password }) {
   const response = await fetch(`${BASE_URL}/register`, {
     method: "POST",
@@ -160,4 +166,4 @@ async function deleteNote(id) {
   return { error: false, data: responseJson.data };
 }
 
-export { getAccessToken, putAccessToken, login, register, getUserLogged, addNote, getActiveNotes, getArchivedNotes, getNote, archiveNote, unarchiveNote, deleteNote };
+export { getAccessToken, putAccessToken, login, logout, register, getUserLogged, addNote, getActiveNotes, getArchivedNotes, getNote, archiveNote, unarchiveNote, deleteNote };
