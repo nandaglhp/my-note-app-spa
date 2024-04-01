@@ -1,16 +1,15 @@
-// src/components/layout/Navbar.jsx
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getAccessToken, logout } from "../../utils/network-data"; // Pastikan import fungsi logout
+import { useAuth } from "../../context/AuthContext"; // Import useAuth hook
 
 const Navbar = ({ links }) => {
-  const navigate = useNavigate(); // Gunakan useNavigate untuk melakukan navigasi
-  const isLoggedIn = getAccessToken() !== null;
+  const navigate = useNavigate();
+  const { isLoggedIn, logout } = useAuth(); // Gunakan useAuth untuk mendapatkan state isLoggedIn dan fungsi logout
 
   // Fungsi untuk menangani logout
   const handleLogout = () => {
-    logout(); // Panggil fungsi logout
+    logout(); // Panggil fungsi logout dari context
     navigate("/login"); // Arahkan pengguna ke halaman login setelah logout
   };
 
@@ -20,7 +19,7 @@ const Navbar = ({ links }) => {
         My Note App
       </Link>
       {links
-        .filter((link) => !(isLoggedIn && link.title === "Login"))
+        .filter((link) => !(isLoggedIn && link.title === "Login")) // Filter link berdasarkan status login
         .map(({ title, path }) => (
           <Link key={path} to={path} className="text-xl">
             {title}

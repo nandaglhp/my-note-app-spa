@@ -8,26 +8,31 @@ import ArchivedNotesPage from "./pages/ArchivedNotesPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <Router>
-      <Navbar
-        links={[
-          { title: "Arsip", path: "/archived" },
-          { title: "Login", path: "/login" },
-        ]}
-      />
-      <Routes>
-        <Route path="/" element={<NotesPage />} />
-        <Route path="/note/:noteId" element={<NoteDetailPage />} />
-        <Route path="/notes/new" element={<AddNotePage />} />
-        <Route path="/archived" element={<ArchivedNotesPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      {" "}
+      {/* Gunakan AuthProvider untuk menyelimuti Router dan komponen di dalamnya */}
+      <Router>
+        <Navbar
+          links={[
+            { title: "Arsip", path: "/archived" },
+            { title: "Login", path: "/login" }, // Mungkin Anda ingin memperbarui ini nanti berdasarkan status login
+          ]}
+        />
+        <Routes>
+          <Route path="/" element={<NotesPage />} />
+          <Route path="/note/:noteId" element={<NoteDetailPage />} />
+          <Route path="/notes/new" element={<AddNotePage />} />
+          <Route path="/archived" element={<ArchivedNotesPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
