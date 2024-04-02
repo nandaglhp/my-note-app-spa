@@ -5,11 +5,13 @@ import InputField from "../components/form/InputField";
 import Button from "../components/ui/SaveButton";
 import { login, putAccessToken } from "../utils/network-data";
 import FormContainer from "../components/layout/FormContainer";
+import { useAuth } from "../context/AuthContext";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login: loginUser } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +20,7 @@ function LoginPage() {
     if (!response.error) {
       // Menyimpan access token ke local storage
       putAccessToken(response.data.accessToken);
+      loginUser(response.data.user);
       // Asumsi: navigasi ke halaman utama setelah login berhasil
       navigate("/");
     } else {

@@ -5,12 +5,11 @@ import { useAuth } from "../../context/AuthContext"; // Import useAuth hook
 
 const Navbar = ({ links }) => {
   const navigate = useNavigate();
-  const { isLoggedIn, logout } = useAuth(); // Gunakan useAuth untuk mendapatkan state isLoggedIn dan fungsi logout
+  const { isLoggedIn, currentUser, logout } = useAuth();
 
-  // Fungsi untuk menangani logout
   const handleLogout = () => {
-    logout(); // Panggil fungsi logout dari context
-    navigate("/login"); // Arahkan pengguna ke halaman login setelah logout
+    logout();
+    navigate("/login");
   };
 
   return (
@@ -18,8 +17,10 @@ const Navbar = ({ links }) => {
       <Link to="/" className="text-2xl font-bold">
         My Note App
       </Link>
+      {/* Tampilkan nama pengguna jika sudah login */}
+      {isLoggedIn && currentUser ? <span className="mr-4">Hi, {currentUser.name}</span> : <span className="mr-4">Hi, Guest</span>}
       {links
-        .filter((link) => !(isLoggedIn && link.title === "Login")) // Filter link berdasarkan status login
+        .filter((link) => !(isLoggedIn && link.title === "Login"))
         .map(({ title, path }) => (
           <Link key={path} to={path} className="text-xl">
             {title}
